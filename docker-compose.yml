@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  # アプリケーションサーバの設定
+  app:
+    # docker buildを行う際の現在の作業フォルダのこと。Dockerビルドの場合はDockerfileを探すためファイル名の指定は不要
+    build: ./infra/php
+    # ホスト側のディレクトリや名前付きボリュームをコンテナ側へマウントしたい時に指定する。
+    # 今回はdockerによって起動したDocker Engineが動作している仮想マシン(ホスト側)の./backendディレクトリをappサービスコンテナ内/workにマウントしている.
+    # backendディレクトリは自作する
+    volumes:
+      - ./backend:/work
